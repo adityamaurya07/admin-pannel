@@ -1,4 +1,7 @@
 import Home from "./component/home";
+import TreeEl from "./component/tree";
+import Login from "./component/login";
+import Signup from "./component/signup";
 
 import "@fontsource-variable/inter";
 
@@ -8,6 +11,18 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Home />,
+  },
+  {
+    path: "/tree",
+    element: <TreeEl />,
+  },
+  {
+    path: "/login",
+    element: <Login />,
+  },
+  {
+    path: "/signup",
+    element: <Signup />,
   },
 ]);
 

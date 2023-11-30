@@ -1,11 +1,7 @@
-import LayoutEl from "../shared/layout";
+import Dashboard from "../dashboard";
 
 const Home = () => {
-  return (
-    <LayoutEl>
-      <h1 className="text-red-600">Home</h1>
-    </LayoutEl>
-  );
+  return <Dashboard />;
 };
 
 export default Home;

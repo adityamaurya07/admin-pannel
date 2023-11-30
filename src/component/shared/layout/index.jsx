@@ -32,6 +32,12 @@ const LayoutEl = ({ children }) => {
       path: "/",
     },
     {
+      key: 1,
+      title: "Second Page",
+      icon: <DashboardOutlined />,
+      path: "/tree",
+    },
+    {
       key: 2,
       title: "Campaigns",
       icon: <ShopOutlined />,
@@ -77,7 +83,9 @@ const LayoutEl = ({ children }) => {
         className="min-h-screen !bg-[#0B3366]"
         trigger={null}
       >
-        {collapsed ? null : <img src="/images/logo.png" className="w-9/12" />}
+        {collapsed ? null : (
+          <img src="/images/logo.png" className="w-9/12" alt="err" />
+        )}
         <Button
           size="small"
           icon={
@@ -140,7 +148,9 @@ const LayoutEl = ({ children }) => {
           Copyrights©2023. FutureIk
         </Footer>
         <FloatButton
-          icon={<FaHeadset className="!text-[#5F6EA7]" />}
+          type="text"
+          className="!bg-[#003B69]"
+          icon={<FaHeadset className="!text-white " />}
           onClick={() => console.log("click")}
         />
       </Layout>

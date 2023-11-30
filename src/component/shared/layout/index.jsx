@@ -1,20 +1,14 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import {
-  StarOutlined,
   CaretLeftOutlined,
-  BarChartOutlined,
   CaretRightOutlined,
-  ShopOutlined,
-  DashboardOutlined,
   PlusOutlined,
-  MenuUnfoldOutlined,
 } from "@ant-design/icons";
 
 import { FaRegUser } from "react-icons/fa6";
 
-import { FaHeadset, FaRegBell, FaLaptop } from "react-icons/fa";
-import { AiFillCode } from "react-icons/ai";
+import { FaHeadset, FaRegBell } from "react-icons/fa";
 import { Layout, Button, Menu, FloatButton } from "antd";
 
 const { Item } = Menu;
@@ -28,80 +22,55 @@ const LayoutEl = ({ children }) => {
     {
       key: 1,
       title: "Dashboard",
-      icon: <DashboardOutlined />,
+      icon: <img src="/images/i-1.png" width={26} alt="err" />,
       path: "/",
-    },
-    {
-      key: 1,
-      title: "Second Page",
-      icon: <DashboardOutlined />,
-      path: "/tree",
     },
     {
       key: 2,
       title: "Campaigns",
-      icon: <ShopOutlined />,
+      icon: <img src="/images/i.png" width={22} alt="err" />,
       path: "/",
     },
     {
       key: 3,
       title: "Commands",
-      icon: <AiFillCode />,
+      icon: <img src="/images/i-7.png" width={20} alt="err" />,
       path: "/",
     },
     {
       key: 4,
       title: "Zones",
-      icon: <BarChartOutlined />,
+      icon: <img src="/images/i-6.png" width={20} alt="err" />,
       path: "/",
     },
     {
       key: 5,
       title: "Channels",
-      icon: <StarOutlined />,
+      icon: <img src="/images/i-3.png" width={20} alt="err" />,
       path: "/",
     },
     {
       key: 6,
       title: "Devices",
-      icon: <FaLaptop />,
+      icon: <img src="/images/i-4.png" width={20} alt="err" />,
       path: "/",
     },
     {
       key: 7,
       title: "Media Library",
-      icon: <MenuUnfoldOutlined />,
+      icon: <img src="/images/i-2.png" width={20} alt="err" />,
       path: "/",
     },
   ];
 
-  useEffect(() => {
-    const handleResize = () => {
-      // Update the collapsed state based on the window width
-      setCollapsed(window.innerWidth <= 768 ? true : false);
-    };
-
-    // Add event listener for window resize
-    window.addEventListener("resize", handleResize);
-
-    // Initial check on component mount
-    handleResize();
-
-    // Cleanup event listener on component unmount
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
   return (
     <Layout>
       <Sider
-        breakpoint="md"
-        collapsedWidth="0"
         collapsed={collapsed}
         collapsible
         className="min-h-screen !bg-[#0B3366] "
         trigger={null}
-        // hidden={window.innerWidth <= 768}
+        hidden={window.innerWidth <= 768}
       >
         {collapsed ? null : (
           <img src="/images/logo.png" className="w-9/12" alt="err" />
@@ -128,8 +97,8 @@ const LayoutEl = ({ children }) => {
         >
           <Item
             key="ke"
-            icon={<PlusOutlined />}
-            className="text-[12px] text-white hover:!text-white !w-11/12"
+            icon={<PlusOutlined className="!text-[19px]" />}
+            className="text-[14px] text-white hover:!text-white !w-11/12"
           >
             <Link to="/">Add Project</Link>
           </Item>
@@ -137,7 +106,7 @@ const LayoutEl = ({ children }) => {
             <Item
               key={index}
               icon={item.icon}
-              className="text-[12px] text-white hover:!text-white !w-11/12"
+              className="text-[14px] text-white hover:!text-white !w-11/12"
             >
               <Link to={item.path}>{item.title}</Link>
             </Item>

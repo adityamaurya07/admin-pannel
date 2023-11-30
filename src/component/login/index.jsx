@@ -12,24 +12,16 @@ const Login = () => {
   const {
     register,
     handleSubmit,
-
     formState: { errors },
   } = useForm();
-  const onSubmit = async (data) => {
-    try {
-      const response = await axios({
-        method: "post",
-        url: "http://localhost:9000/auth/login",
-        data,
-      });
-      dispatch(login(response.data));
+  const onSubmit = (data) => {
+    console.log(data);
+    const storedUserData = localStorage.getItem("userData");
+    if (storedUserData) {
       navigate("/");
-      message.success("Login Success !");
-    } catch (err) {
-      console.log(err);
-      dispatch(logout());
-      message.error("Something went wrong !");
+      return message.success("Login Success !");
     }
+    return message.error("Something went wrong !");
   };
 
   return (

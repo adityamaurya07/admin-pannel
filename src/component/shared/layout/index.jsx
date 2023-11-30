@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import {
   StarOutlined,
@@ -75,13 +75,33 @@ const LayoutEl = ({ children }) => {
     },
   ];
 
+  useEffect(() => {
+    const handleResize = () => {
+      // Update the collapsed state based on the window width
+      setCollapsed(window.innerWidth <= 768 ? true : false);
+    };
+
+    // Add event listener for window resize
+    window.addEventListener("resize", handleResize);
+
+    // Initial check on component mount
+    handleResize();
+
+    // Cleanup event listener on component unmount
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
   return (
     <Layout>
       <Sider
+        breakpoint="md"
+        collapsedWidth="0"
         collapsed={collapsed}
         collapsible
-        className="min-h-screen !bg-[#0B3366]"
+        className="min-h-screen !bg-[#0B3366] "
         trigger={null}
+        // hidden={window.innerWidth <= 768}
       >
         {collapsed ? null : (
           <img src="/images/logo.png" className="w-9/12" alt="err" />

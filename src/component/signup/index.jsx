@@ -11,20 +11,11 @@ const Signup = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit = async (data) => {
-    try {
-      const res = await axios({
-        method: "post",
-        url: "http://localhost:9000/auth/signup",
-        data,
-      });
-      message.success(res.data.message);
-      router("/login");
-      console.log(res.data);
-    } catch (err) {
-      message.error("Something went wrong");
-      console.log(err.response);
-    }
+  const onSubmit = (data) => {
+    console.log(data);
+    localStorage.setItem("userData", JSON.stringify(data));
+    message.success("Signup Success !");
+    router("/login");
   };
   return (
     <>
